@@ -1,12 +1,11 @@
-/* Import headline font */
 @import url("https://fonts.googleapis.com/css2?family=Mooli&display=swap");
 
 :root {
-  --primary-color: #52489c;
-  --secondary-color: #59c3c3;
-  --accent-color: #f45b69;
-  --text-dark: #333;
-  --text-light: #ebebeb;
+  --primary-color: #2579be;
+  --secondary-color: #a3f1f1;
+  --accent-color: #bc5bf4;
+  --text-dark: #1f1e1e;
+  --text-light: #fafafa;
   --primary-font: Arial, Helvetica, sans-serif;
   --secondary-font: 'Mooli', sans-serif;
 }
@@ -25,9 +24,71 @@ button {
   background-color: var(--primary-color);
   color: var(--text-light);
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.15rem 1rem;
   font-size: 1em;
   cursor: pointer;
+}
+
+.menu {
+  display: none;
+  flex-direction: column;
+  background: var(--primary-color);
+  width: 100%;
+  text-align: center;
+  position: static;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  gap: 0.1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 0;
+  margin: 0;
+}
+
+.menu a {
+  font-size: 0.65em;
+  text-decoration: underline;
+  padding: 0.05em 0.5em;
+}
+
+.menu.show {
+  display: flex;
+}
+
+@media (min-width: 700px) and (max-width: 999px) {
+  .menu {
+    flex-direction: row;
+    background: none;
+    width: auto;
+    gap: 1rem;
+    padding: 0;
+    justify-content: center;
+    position: static;
+  }
+  .menu-button {
+    display: block;
+    margin: 1rem auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .menu {
+    display: flex !important;
+    flex-direction: row;
+    background: none;
+    width: auto;
+    gap: 1rem;
+    padding: 0;
+    justify-content: center;
+    position: static;
+  }
+  .menu-button {
+    display: none;
+  }
 }
 
 body {
@@ -85,10 +146,6 @@ img {
 }
 
 @media (min-width: 700px) {
-  .ul {
-    flex-direction: row;
-    justify-content: center;
-  }
   .gallery {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -106,4 +163,55 @@ figure {
 
 footer p {
   margin: 0.5rem 0;
+}
+
+dialog#image-viewer {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+dialog[open] {
+  display: flex;
+}
+
+#image-viewer img {
+  display: block;
+  width: 90vw;
+  max-width: 600px;
+  max-height: 80vh;
+  margin: 20vh auto 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.close-viewer {
+  position: absolute;
+  right: 1vw;
+  top: 1vw;
+  width: 1.5em;
+  height: 1.5em;
+  background: #fff;
+  border: none;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+  z-index: 11;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
